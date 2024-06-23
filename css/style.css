@@ -5,6 +5,7 @@
 
 :root {
   --dark-blue: #0c4a6e;
+  --light-blue: #0284c7;
   --white: #ffffff;
   --light-gray: #eff6ff;
   --dark-grey: #ededed;
@@ -12,6 +13,7 @@
   --font-family: "satoshi", system-ui, sans-serif;
   --border-radius: 10px;
   --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  --background-transition: background-color 0.9s ease-in-out;
 
   font-family: var(--font-family);
 }
@@ -23,26 +25,27 @@ ul li {
 ul li a {
   text-decoration: none;
 }
-body {
-  position: relative;
-}
 
 main.container {
   display: grid;
   grid-template-columns: 250px 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "main-sidebar main-container";
-  /* max-height: 100vh; */
+  height: 100vh;
+  width: 100vw;
 }
-
+aside {
+  position: relative;
+}
 .main-sidebar {
   height: 100vh;
-  width: 1;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px 1fr;
+  grid-template-rows: auto 1fr;
   background: var(--dark-blue);
   grid-area: main-sidebar;
+  position: sticky;
+  top: 0;
 }
 
 .main-container {
@@ -52,6 +55,7 @@ main.container {
   grid-template-areas: "main-header" "dashboard-content";
   background: var(--light-gray);
   grid-area: main-container;
+  position: relative;
 }
 
 .main-header {
@@ -64,6 +68,8 @@ main.container {
   background: var(--white);
   grid-area: main-header;
   box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
 }
 .main-header-top {
   grid-area: main-header-top;
@@ -155,10 +161,15 @@ main.container {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--white);
-  background-color: var(--dark-blue);
+  background-color: var(--light-blue);
   padding: 10px 30px;
   margin-left: 20px;
   border-radius: 30px;
+  transition: var(--background-transition);
+}
+
+.header-bottom-menu ul li a:hover {
+  background-color: var(--dark-blue);
 }
 
 .dashboard-content {
@@ -203,12 +214,12 @@ main.container {
   padding: 12px 32px;
   display: block;
   font-weight: 400;
-  transition: background-color 0.9s ease-in-out;
+  transition: var(--background-transition);
 }
 
 .aside-menu ul li a:hover,
 .aside-footer ul li a:hover {
-  background-color: #075985;
+  background-color: var(--light-blue);
 }
 
 .aside-menu ul li a span,
@@ -222,6 +233,7 @@ main.container {
   grid-template-columns: 2.25fr 0.75fr;
   padding: 25px;
   gap: 25px;
+  overflow: auto;
 }
 
 .content-left {
@@ -233,7 +245,7 @@ main.container {
 .project-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 200px);
+  grid-template-rows: repeat(3, 1fr);
   gap: 20px;
 }
 
