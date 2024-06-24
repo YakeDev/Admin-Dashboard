@@ -314,8 +314,32 @@ aside {
 }
 
 .trainding {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: ;
   padding: 30px;
   border-radius: var(--border-radius);
   background-color: var(--white);
   box-shadow: var(--box-shadow);
+}
+
+.trending-profile-container {
+  display: flex;
+  align-items: center;
+  /* margin-bottom: 15px; */
+}
+
+.trending-profile-container img {
+  height: 36px;
+  border-radius: 50px;
+  margin-right: 20px;
+}
+
+.profile-trend h5 {
+  font-size: 1rem;
+}
+.profile-trend p {
+  font-size: 0.8rem;
+  color: #747474;
 }
